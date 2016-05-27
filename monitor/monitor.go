@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 	"reflect"
-	"strconv"
 	"strings"
 	"time"
 
@@ -268,16 +267,6 @@ func (monitor *MySQLMonitor) listenLainletEvent() {
 }
 
 func (monitor *MySQLMonitor) report() {
-	graphiteConf := make(map[string]string)
-	if data, err := GetLainConf("features/graphite"); err != nil {
-		glog.Errorf("Get graphite feature failed: %s", err.Error())
-		return
-	} else if err := json.Unmarshal(data, &graphiteConf); err != nil {
-		glog.Errorf("Unmarshal graphite feature failed: %s", err.Error())
-		return
-	} else if needReport, _ := strconv.ParseBool(graphiteConf["features/graphite"]); !needReport {
-		return
-	}
 
 	conn, err := net.Dial("tcp", graphiteAddress)
 	if err != nil {

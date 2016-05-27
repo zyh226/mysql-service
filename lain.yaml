@@ -25,6 +25,7 @@ proc.mysql-server:
     port: 3306
     env:
         - LAINLET_PORT=9001
+        - GRAPHITE_PORT=2003
     memory: 512m
     secret_files:
         - conf/secret.conf
