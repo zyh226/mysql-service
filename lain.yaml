@@ -26,7 +26,7 @@ proc.mysql-server:
     env:
         - LAINLET_PORT=9001
         - GRAPHITE_PORT=2003
-    memory: 512m
+    memory: 1024m
     secret_files:
         - conf/secret.conf
     persistent_dirs:
