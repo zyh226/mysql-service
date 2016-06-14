@@ -20,7 +20,7 @@ build:
         - go build -o proxyd $GOPATH/src/github.com/laincloud/mysql-service/proxyd.go
 
 proc.mysql-server:
-    cmd: ./init_mysql_service.sh
+    cmd: ./init_mysql_service.sh 1024M 256M
     num_instances: 3
     port: 3306
     env:
